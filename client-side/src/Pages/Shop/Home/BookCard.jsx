@@ -53,11 +53,19 @@ const BookCard = ({headLine,books}) => {
               <div className='relative'>
                 <img src={book.imageURL} alt=""/>
                 <div className='absolute top-3 right-3 bg-blue-600 hover:bg-black p-2 rounded'>
-                {  <FaShoppingCart className='w-4 h-4 text-white'/> }
+                 <FaShoppingCart className='w-4 h-4 text-white'/> 
                 </div>
               </div>
               <div>
-                <h3>{book.bookTitle}</h3>
+                <div >
+                <h3 className='text-black'>{book.bookTitle}</h3>
+                <p className='text-black font-medium'>{book.authorName}</p>
+              </div>
+              <div>
+                <p className='text-blue-600'>
+                  $10.00
+                </p>
+              </div>
               </div>
             </Link>
 

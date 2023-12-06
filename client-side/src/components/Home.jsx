@@ -7,6 +7,7 @@ import PromoBanner from '../Pages/Shop/Home/PromoBanner'
 import OtherBooks from '../Pages/Shop/Home/OtherBook'
 import Reviews from '../Pages/Shop/Home/Reviews'
 
+
 const Home = () => {
   return (
    <><Banner />
@@ -15,6 +16,8 @@ const Home = () => {
    <PromoBanner />
    <OtherBooks />
    <Reviews />
+  
+
    </>
 
   )
