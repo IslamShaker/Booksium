@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
     },
     username: {
         type: String,
-        required: true,
+       
         trim: true,
         minlength: 2,
         maxlength: 200,
@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+       
         trim: true,
         minlength: 8,
 
@@ -75,7 +75,16 @@ function ValidateLoginrUser(obj) {
 
     return schema.validate(obj);
 }
+ //validate change password
 
+ function ValidateChangePassword(obj){
+    const schema =joi.object({
+      
+        password: joi.string().trim().min(6).required(),
+       });
+
+      return schema.validate(obj);
+}
 
 
 
@@ -83,4 +92,5 @@ module.exports = {
     User,
     ValidateRegisterUser,
     ValidateLoginrUser,
+    ValidateChangePassword,
 }
