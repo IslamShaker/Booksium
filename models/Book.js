@@ -59,12 +59,12 @@ function validateCreateBook(obj) {
 //Vaildate Update Book
 function validateUpdateBook(obj) {
     const shcema = Joi.object({
-        bookTitle: Joi.string().trim().required(),
-        authorName: Joi.string().required(),
-        imageURL: Joi.string().trim().required(),
-        category: Joi.string().required(),
-        bookDescription: Joi.string().required(),
-        bookPDFURL: Joi.string().required(),
+        bookTitle: Joi.string().trim(),
+        authorName: Joi.string(),
+        imageURL: Joi.string().trim(),
+        category: Joi.string(),
+        bookDescription: Joi.string(),
+        bookPDFURL: Joi.string(),
     });
     return shcema.validate(obj)
 }

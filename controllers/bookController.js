@@ -5,6 +5,7 @@ const asyncHandler = require("express-async-handler");
 const { validateCreateBook, validateUpdateBook, Book } = require("../models/Book")
 
 
+
 //decumentation 
 /**
  * @desc Get all books
@@ -37,6 +38,38 @@ const gitBookById = asyncHandler(async (req, res) => {
 
 })
 
-module.exports = { gitAllBooks, gitBookById };
+/**
+ * @desc Create New Book 
+ * @route /api/books
+ * @method Post
+ * @access private(only Admin)
+ */
+
+const createBook = asyncHandler(async (req, res) => {
+
+    const { error } = validateCreateBook(req.body);
+    if (error) {
+        return res.status(400).json({ messge: error.details[0].message });
+    }
+    const book = new Book(
+        {
+            bookTitle: req.body.bookTitle,
+            authorName: req.body.authorName,
+            imageURL: req.body.imageURL,
+            category: req.body.category,
+            bookDescription: req.body.bookDescription,
+            bookPDFURL: req.body.bookPDFURL
+            
+        }
+    )
+
+    const result = await book.save();
+    res.status(201).json(result);
+});
+
+
+
+
+module.exports = { gitAllBooks, gitBookById ,createBook};
 
 

@@ -3,14 +3,16 @@ const router = express.Router();
 
 //import Methods
 
-const {gitAllBooks}=require("../controllers/bookController") 
-const {gitBookById} =require("../controllers/bookController") 
+const {gitAllBooks,gitBookById , deleteBook,updateBook,createBook}=require("../controllers/bookController") 
 
 
 
 router.route("/").get(gitAllBooks);
 
 router.route("/:id").get(gitBookById);
+
+router.route("/").post(createBook);
+
 
 
 module.exports=router;
