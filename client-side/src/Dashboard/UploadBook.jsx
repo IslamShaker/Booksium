@@ -135,9 +135,9 @@ const UploadBook = () => {
         {/* Book Pdf URL */}
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="bookPdfUrl" value="Book Pdf URL" />
+            <Label htmlFor="bookPDFURL" value="Book Pdf URL" />
           </div>
-          <TextInput id="bookPdfUrl" type="text" placeholder="Book Pdf URL" name='bookPdfUrl' required />
+          <TextInput id="bookPDFURL" type="text" placeholder="Book Pdf URL" name='bookPDFURL' required />
         </div>
 
         <Button type='submit' className='mt-5'>
