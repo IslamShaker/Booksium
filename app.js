@@ -2,6 +2,9 @@
 const express = require("express");
 
 
+require("dotenv").config();
+
+
 //call the Mongoose
 const mongoose = require("mongoose");
 //.connect("mongodb://127.0.0.1:27017/B")
@@ -20,6 +23,7 @@ app.use(express.json());
 
 
 app.use("/api/books", require("./routes/books"));
+app.use("/api/auth" ,require("./routes/auth"));
 
 
 
