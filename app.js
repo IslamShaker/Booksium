@@ -4,10 +4,10 @@ const express = require("express");
 
 //call the Mongoose
 const mongoose = require("mongoose");
-
+//.connect("mongodb://127.0.0.1:27017/B")
 //Connection To Database//
 mongoose
-    .connect("mongodb://127.0.0.1:27017/BookStor")
+    .connect("mongodb://127.0.0.1:27017/BookStore")
     .then(() => console.log("Connected To MongoDB ...."))
     .catch((error) => console.log("Connection Failed To MongoDB !", error));
 
@@ -19,10 +19,7 @@ const app = express();
 app.use(express.json());
 
 
-app.get("/", (req, res) => {
-        res.send("Hello , Welcome To Express JS");
-    });
-
+app.use("/api/books", require("./routes/books"));
 
 
 
