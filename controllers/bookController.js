@@ -67,9 +67,35 @@ const createBook = asyncHandler(async (req, res) => {
     res.status(201).json(result);
 });
 
+/**
+ * @desc Update a Book 
+ * @route /api/books/:id
+ * @method Put
+ * @access private(only Admin)
+ */
+
+const updateBook = asyncHandler(async (req, res) => {
+    const { error } = validateUpdateBook(req.body);
+
+    if (error) {
+        return res.status(400).json({ message: error.details[0].message });
+    }
+
+    const updateBook = await Book.findByIdAndUpdate(req.params.id, {
+        $set: {
+            bookTitle: req.body.bookTitle,
+            authorName: req.body.authorName,
+            imageURL: req.body.imageURL,
+            category: req.body.category,
+            bookDescription: req.body.bookDescription,
+            bookPDFURL: req.body.bookPDFURL
+        }
+    }, { new: true })
+    res.status(200).json(updateBook)
+})
 
 
 
-module.exports = { gitAllBooks, gitBookById ,createBook};
+module.exports = { gitAllBooks, gitBookById, createBook, updateBook };
 
 

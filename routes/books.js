@@ -13,6 +13,7 @@ router.route("/:id").get(gitBookById);
 
 router.route("/").post(createBook);
 
+router.route("/:id").put(updateBook);
 
 
 module.exports=router;
