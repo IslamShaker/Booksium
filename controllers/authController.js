@@ -44,8 +44,43 @@ const register=asynchandler(async(req,res)=>{
 });
 
 
+/**
+ * @desc login user
+ * @router /api/auth/login
+ * @method post
+ * @access puplic
+ */
+
+const login =asynchandler(async(req,res)=>{
+    const {error} =ValidateLoginrUser(req.body);
+    if(error){
+       return res.status(400).json({message :error.details[0].message});
+    }
+
+
+    let user =await User.findOne({email: req.body.email });
+    if (!user){
+       return res.status(400).json({message:"invalid email or password"});
+    }
+
+    const IsMatchPassword =await bcrypt.compare(req.body.password, user.password);
+
+    if (!IsMatchPassword){
+        return res.status(400).json({message:"invalid email or password"});
+     }
+
+
+    const token = user.generateToken();
+
+    const{ password ,...other} =user._doc;
+
+    res.status(201).json({...other ,token});
+})
+
+
 
 module.exports={
     register,
+    login,
     
 }
