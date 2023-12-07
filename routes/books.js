@@ -15,5 +15,6 @@ router.route("/").post(createBook);
 
 router.route("/:id").put(updateBook);
 
+router.route("/:id").delete(deleteBook);
 
 module.exports=router;

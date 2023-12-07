@@ -95,7 +95,26 @@ const updateBook = asyncHandler(async (req, res) => {
 })
 
 
+/**
+ * @desc Delete a Book 
+ * @route /api/books/:id
+ * @method Delete
+ * @access private(only Admin)
+ */
 
-module.exports = { gitAllBooks, gitBookById, createBook, updateBook };
+const deleteBook = asyncHandler(async (req, res) => {
+    //Check the book is find or not
+    const book = await Book.findById(req.params.id)
+    if (book) {
+        await Book.findByIdAndDelete(req.params.id)
+        res.status(200).json({ message: "book has been Deleted" });
+    } else {
+        res.status(404).json({ message: "book not found" })
+    }
+
+})
+
+
+module.exports = { gitAllBooks, gitBookById, createBook, updateBook, deleteBook };
 
 
