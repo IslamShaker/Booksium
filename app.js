@@ -31,6 +31,7 @@ app.use(express.json());
 app.use("/api/books", require("./routes/books"));
 app.use("/api/auth" ,require("./routes/auth"));
 app.use("/api/upload" ,require("./routes/upload"));
+app.use("/password" ,require("./routes/password"));
 
 
 
