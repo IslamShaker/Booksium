@@ -12,7 +12,7 @@ const Login =()=>{
 //   const {login,loginWithGoogle}= useContext(AuthContext);
 
 //////////////////////////////////////
-const [error,serError]=useState("error");
+const [error,serError]=useState("");
 
 const locations =useLocation();
 const navigate=useNavigate();
@@ -33,6 +33,7 @@ const from=location.state?.from?.pathname||"/";
      .catch((error)=>{
         const errorcode=error.code;
         const errorMessage =error.message;
+        serError(errorMessage)
      });
     }
     
@@ -73,11 +74,12 @@ loginWithGoogle().then((result)=>{
                             <div className="relative">
                                 <input  id="password" name="password" type="password" className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
                                 </div>
+                              {error?   <p className="text-red-600 text-base">Email or Password is not correct</p>:""}
                                 <p>If you haven't an account . Please <Link to="/sign-up" className="text-blue-600 underline">Sign up</Link> Here</p>
 {/* <span>If ypu have an account . Please <span to="/login" className="text-blue-600 underline">Login</span> Here</span> */}
 
                             <div className="relative">
-                                <button className="bg-blue-500 text-white rounded-md px-6 py-2">Sign up</button>
+                                <button className="bg-blue-500 text-white rounded-md px-6 py-2">log in</button>
                             </div>
                         </form>
                     </div>
@@ -86,7 +88,7 @@ loginWithGoogle().then((result)=>{
 
                     <hr/>
                     <div className=" flex w-full items-center flex-col mt-5 gap-3">
-                        <button /*onClick={handleRegeister}*/ className='block'> <img src={googleLogo} alt="" className='w-12 h-12 inline-block' /> Login with Google</button>
+                        <button onClick={handleRegeister} className='block'> <img src={googleLogo} alt="" className='w-12 h-12 inline-block' /> Login with Google</button>
                     </div>
                 </div>
             </div>
