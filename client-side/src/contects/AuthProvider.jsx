@@ -9,7 +9,7 @@ const auth =getAuth(app);
 ///////////////// vedio 6:06:20    //////////////////
 //sign in is removed when addind this code
 
-// const googleProvider =new googleProvider();
+const googleProvider =new GoogleAuthProvider();
 // /////////////////////////////////////////////////
 const AuthProvider =({children})=>{
     const [user,setUser]=useState(null);
@@ -27,9 +27,18 @@ const AuthProvider =({children})=>{
     
 
     const login =(email,password)=>{
+        setLoading(true);
         return   signInWithEmailAndPassword(auth,email,password)
     }
 
+
+    const logOut=()=>{
+     
+        return  signOut(auth)
+
+
+
+    }
     useEffect(()=>{
         const unsubiscribe = onAuthStateChanged(auth,currentUser=>{
             // console.log(currentUser);
@@ -44,7 +53,9 @@ const AuthProvider =({children})=>{
         user,
         creatUser,
         loginWithGoogle,
-        loading
+        loading,
+        login,
+        logOut
     }
     return(
        <AuthContext.Provider value={authInfo}>
