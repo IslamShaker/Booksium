@@ -13,7 +13,7 @@ function FavoriteBooks() {
   )
   return (
     <div>
-      <BookCard books={books} headLine="best saller books"/>
+      <BookCard books={books} headLine="Best seller books"/>
     </div>
   )
 }
