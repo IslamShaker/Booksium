@@ -17,3 +17,9 @@ Key features of the MERN Book Store App Website with Inventory Management includ
 4. Admin Dashboard:
    - Store managers can access a dedicated admin dashboard where they can view real-time inventory status, and manage orders, customers, and user accounts.
    - And also allows store managers to add, edit, and delete books.
+
+<hr>
+
+## Video Link:
+
+<a href="https://drive.google.com/file/d/1b_-Ari9ZEWUaBGBpfkMzn1tUT7ya0Nli/view?usp=sharing">Booksium Video</a>
